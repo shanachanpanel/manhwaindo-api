@@ -174,7 +174,7 @@ app.get('/api/manhwa-recommend', async (req, res) => {
 // DATA GENRE
   app.get('/api/data', async (req, res) => {
     try {
-        const url = 'https://kiryuu.org/series/list-mode/'; // Replace with the actual URL
+        const url = 'https://kiryuu.org/manga/list-mode/'; // Replace with the actual URL
         const { data } = await axios.get(url);
         const $ = load(data);
 
@@ -490,7 +490,7 @@ app.get('/api/manhwa-ongoing', async (req, res) => {
 // READ CHAPTER
 app.get('/api/chapter/:chapterId', async (req, res) => {
   const { chapterId } = req.params;
-  const url = `https://komikstation.co/${chapterId}`; // Sesuaikan URL jika perlu
+  const url = `https://kiryuu.org/${chapterId}`; // Sesuaikan URL jika perlu
 
   try {
     const response = await axios.get(url);
