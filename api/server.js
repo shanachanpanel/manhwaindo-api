@@ -368,7 +368,7 @@ app.get('/api/page/:pageNumber/search/:searchId', async (req, res) => {
 // MANHWA DETAL
 app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
   const manhwaId = req.params.manhwaId;
-  const url = `https://komikstation.co/manga/${manhwaId}`;
+  const url = `https://kiryuu.org/manga/${manhwaId}`;
 
   try {
       const { data } = await axios.get(url);
