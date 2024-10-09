@@ -57,7 +57,7 @@ app.get('/api/manhwa-popular', async (req, res) => {
 app.get('/api/manhwa-recomendation', async (req, res) => {
   try {
     // URL yang akan di-scrape
-    const url = 'https://kiryuu.org/series/?status=ongoing&type=&order=popular';
+    const url = 'https://kiryuu.org/manga/?status=ongoing&type=&order=popular';
 
     // Ambil HTML dari URL menggunakan axios
     const { data } = await axios.get(url);
@@ -374,22 +374,15 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
       const { data } = await axios.get(url);
       const $ = load(data);
 
-      // Extract title, image, rating, and follow information
+     // Extract title, image, rating, and follow information
       const title = $('.seriestucontl .thumb img').attr('title');
       const imageSrc = $('.seriestucontl .thumb img').attr('src');
       const rating = $('.seriestucontl .rating .num').text().trim();
       const followedBy = $('.seriestucontl .bmc').text().trim();
 
-      // Extract synopsis
+    // Extract synopsis
       const synopsis = $('.seriestucontentr .entry-content').text().trim();
 
-      // Extract the first and latest chapter
-      const firstChapterLink = $('.lastend .inepcx').first().find('a').attr('href');
-      const firstChapterTitle = $('.lastend .inepcx').first().find('.epcur').text().trim();
-      const latestChapterLink = $('.lastend .inepcx').last().find('a').attr('href');
-      const latestChapterTitle = $('.lastend .inepcx').last().find('.epcur').text().trim();
-
-      // Extract details from the table (Status, Type, Released, etc.)
       const status = $('table.infotable tr').eq(0).find('td').eq(1).text().trim();
       const type = $('table.infotable tr').eq(1).find('td').eq(1).text().trim();
       const released = $('table.infotable tr').eq(2).find('td').eq(1).text().trim();
@@ -400,7 +393,14 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
       const updatedOn = $('table.infotable tr').eq(7).find('time').text().trim();
       const views = $('table.infotable tr').eq(8).find('.ts-views-count').text().trim();
 
-      // Extract genres
+      
+      // Mengambil views jika tersedia
+      const viewsElement = $('.info-left .tsinfo .imptdt').eq(6).text().trim();
+      const views = viewsElement.startsWith('Views ') ? viewsElement.replace('Views ', '') : 'N/A';
+      
+      const synopsis = $('.info-desc .entry-content.entry-content-single').text().trim();
+      
+      // Mengambil genre
       const genres = [];
       $('.seriestugenre a').each((index, element) => {
           const genreName = $(element).text().trim();
@@ -410,31 +410,34 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
               genreLink
           });
       });
+      
+      const chapters = [];
+      $('#chapterlist ul li').each((index, element) => {
+          const chapterLink = $(element).find('a').attr('href');
+          const chapterTitle = $(element).find('.chapternum').text().trim();
+          const chapterDate = $(element).find('.chapterdate').text().trim();
+  
+          chapters.push({
+              chapterLink,
+              chapterTitle,
+              chapterDate
+          });
+      });
 
       const manhwaDetails = {
           title,
           imageSrc,
           rating,
-          followedBy,
-          synopsis,
-          firstChapter: {
-              title: firstChapterTitle,
-              link: firstChapterLink
-          },
-          latestChapter: {
-              title: latestChapterTitle,
-              link: latestChapterLink
-          },
           status,
           type,
-          released,
           author,
-          artist,
           postedBy,
           postedOn,
           updatedOn,
           views,
-          genres
+          synopsis,
+          genres,
+          chapters
       };
 
       res.json(manhwaDetails);
@@ -444,13 +447,12 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
   }
 });
 
-
 // MANHWA DETAIL
 
 // MANHWA-ONGOING
 app.get('/api/manhwa-ongoing', async (req, res) => {
   try {
-      const url = 'https://kiryuu.org/series/?status=ongoing&type=manhwa&order=';
+      const url = 'https://kiryuu.org/manga/?status=ongoing&type=manhwa&order=';
       const response = await axios.get(url);
       const html = response.data;
       const $ = load(html);
