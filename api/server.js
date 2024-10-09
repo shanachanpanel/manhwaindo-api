@@ -368,7 +368,7 @@ app.get('/api/page/:pageNumber/search/:searchId', async (req, res) => {
 // MANHWA DETAL
 app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
   const manhwaId = req.params.manhwaId;
-  const url = `https://kiryuu.org/manga/${manhwaId}`;
+  const url = `https://komikindo.lol/komik/${manhwaId}`;
 
   try {
       const { data } = await axios.get(url);
@@ -490,7 +490,7 @@ app.get('/api/manhwa-ongoing', async (req, res) => {
 // READ CHAPTER
 app.get('/api/chapter/:chapterId', async (req, res) => {
   const { chapterId } = req.params;
-  const url = `https://kiryuu.org/${chapterId}`; // Sesuaikan URL jika perlu
+  const url = `https://komikindo.lol/${chapterId}`; // Sesuaikan URL jika perlu
 
   try {
     const response = await axios.get(url);
