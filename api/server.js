@@ -13,7 +13,7 @@ app.use(cors());
 app.get('/api/manhwa-popular', async (req, res) => {
   try {
     // URL yang akan di-scrape
-    const url = 'https://komikstation.co/';
+    const url = 'https://natsu.id/';
 
     // Ambil HTML dari URL menggunakan axios
     const { data } = await axios.get(url);
@@ -57,7 +57,7 @@ app.get('/api/manhwa-popular', async (req, res) => {
 app.get('/api/manhwa-recomendation', async (req, res) => {
   try {
     // URL yang akan di-scrape
-    const url = 'https://komikstation.co/manga/?status=ongoing&type=&order=popular';
+    const url = 'https://natsu.id/manga/?status=ongoing&type=&order=popular';
 
     // Ambil HTML dari URL menggunakan axios
     const { data } = await axios.get(url);
@@ -100,7 +100,7 @@ app.get('/api/manhwa-recomendation', async (req, res) => {
 // NEW MANHWA
 app.get('/api/manhwa-new', async (req, res) => {
     try {
-      const url = 'https://komikstation.co/';
+      const url = 'https://natsu.id/';
       const { data } = await axios.get(url);
       const $ = load(data);
   
@@ -142,7 +142,7 @@ app.get('/api/manhwa-new', async (req, res) => {
 
 // MANHWA RECOMMEND
 app.get('/api/manhwa-recommend', async (req, res) => {
-  const url = 'https://komikstation.co/';
+  const url = 'https://natsu.id/';
 
   try {
       const { data } = await axios.get(url);
@@ -174,7 +174,7 @@ app.get('/api/manhwa-recommend', async (req, res) => {
 // DATA GENRE
   app.get('/api/data', async (req, res) => {
     try {
-        const url = 'https://komikstation.co/manga/list-mode/'; // Replace with the actual URL
+        const url = 'https://natsu.id/manga/list-mode/'; // Replace with the actual URL
         const { data } = await axios.get(url);
         const $ = load(data);
 
@@ -201,7 +201,7 @@ app.get('/api/manhwa-recommend', async (req, res) => {
 // GENRE RESULT
 app.get('/api/genre/:genreId', async (req, res) => {
   const { genreId } = req.params;
-  const url = `https://komikstation.co/genres/${genreId}`;
+  const url = `https://natsu.id/genres/${genreId}`;
 
   try {
     const { data } = await axios.get(url);
@@ -239,7 +239,7 @@ app.get('/api/genre/:genreId', async (req, res) => {
 });
 app.get('/api/genre/:genreId/page/:pageNumber', async (req, res) => {
   const { genreId, pageNumber } = req.params;
-  const url = `https://komikstation.co/genres/${genreId}/page/${pageNumber}`;
+  const url = `https://natsu.id/genres/${genreId}/page/${pageNumber}`;
 
   try {
     const { data } = await axios.get(url);
@@ -286,7 +286,7 @@ app.get('/api/genre/:genreId/page/:pageNumber', async (req, res) => {
 // SEARCH RESULT
 app.get('/api/search/:searchId', async (req, res) => {
   const { searchId } = req.params;
-  const url = `https://komikstation.co/?s=${searchId}`;
+  const url = `https://natsu.id/?s=${searchId}`;
 
   try {
     const { data } = await axios.get(url);
@@ -324,7 +324,7 @@ app.get('/api/search/:searchId', async (req, res) => {
 });
 app.get('/api/page/:pageNumber/search/:searchId', async (req, res) => {
   const { searchId, pageNumber } = req.params;
-  const url = `https://komikstation.co/page/${pageNumber}/?s=${searchId}`;
+  const url = `https://natsu.id/page/${pageNumber}/?s=${searchId}`;
 
   try {
     const { data } = await axios.get(url);
@@ -368,7 +368,7 @@ app.get('/api/page/:pageNumber/search/:searchId', async (req, res) => {
 // MANHWA DETAL
 app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
   const manhwaId = req.params.manhwaId;
-  const url = `https://komikstation.co/manga/${manhwaId}`;
+  const url = `https://natsu.id/manga/${manhwaId}`;
 
   try {
       const { data } = await axios.get(url);
@@ -451,7 +451,7 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
 // MANHWA-ONGOING
 app.get('/api/manhwa-ongoing', async (req, res) => {
   try {
-      const url = 'https://komikstation.co/manga/?status=ongoing&type=manhwa&order=';
+      const url = 'https://natsu.id/manga/?status=ongoing&type=manhwa&order=';
       const response = await axios.get(url);
       const html = response.data;
       const $ = load(html);
@@ -489,7 +489,7 @@ app.get('/api/manhwa-ongoing', async (req, res) => {
 //read chapter
 app.get('/api/chapter/:chapterId', async (req, res) => {
   const { chapterId } = req.params;
-  const url = `https://komikstation.co/${chapterId}`; // Sesuaikan URL jika perlu
+  const url = `https://natsu.id/${chapterId}`; // Sesuaikan URL jika perlu
 
   try {
     const response = await axios.get(url);
