@@ -368,7 +368,7 @@ app.get('/api/page/:pageNumber/search/:searchId', async (req, res) => {
 // MANHWA DETAL
 app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
   const manhwaId = req.params.manhwaId;
-  const url = `https://komikindo.lol/komik/${manhwaId}`;
+  const url = `https://kiryuu.org/manga/${manhwaId}`;
 
   try {
       const { data } = await axios.get(url);
@@ -486,11 +486,10 @@ app.get('/api/manhwa-ongoing', async (req, res) => {
 // MANHWA-ONGOING
 
 
-
-// READ CHAPTER
+//read chapter
 app.get('/api/chapter/:chapterId', async (req, res) => {
   const { chapterId } = req.params;
-  const url = `https://komikindo.lol/${chapterId}`; // Sesuaikan URL jika perlu
+  const url = `https://kiryuu.org/${chapterId}`; // Sesuaikan URL jika perlu
 
   try {
     const response = await axios.get(url);
@@ -500,11 +499,14 @@ app.get('/api/chapter/:chapterId', async (req, res) => {
     // Ambil judul bab
     const title = $('h1.entry-title').text().trim();
 
-    // Fungsi untuk menunggu (delay)
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-    // Tunggu 1 detik sebelum mengambil gambar
-    await delay(1000); 
+    // Ambil gambar dari halaman
+    const images = [];
+    $('#readerarea img').each((index, element) => {
+      const imgSrc = $(element).attr('data-lazy-src') || $(element).attr('src');
+      if (imgSrc && imgSrc !== 'MahiruOfficial_ba-style@nulla.top.png') {
+        images.push(imgSrc);
+      }
+    });
 
     // Temukan dan ambil skrip yang mengandung objek ts_reader
     const scriptContent = $('script').filter((i, el) => {
@@ -514,9 +516,6 @@ app.get('/api/chapter/:chapterId', async (req, res) => {
     // Ekstrak objek JSON dari skrip
     const jsonString = scriptContent.match(/ts_reader\.run\((.*?)\);/)[1];
     const jsonObject = JSON.parse(jsonString);
-
-    // Ambil gambar dari sumber yang ditentukan
-    const images = jsonObject.sources[0].images;
 
     // Ambil URL untuk bab sebelumnya dan berikutnya
     const prevChapter = jsonObject.prevUrl || null;
@@ -537,13 +536,12 @@ app.get('/api/chapter/:chapterId', async (req, res) => {
       }
     });
 
-    // Mengirim respons JSON berisi data judul, gambar, bab sebelumnya, bab berikutnya, dan daftar chapter
     res.json({
       title,
       images,
       prevChapter,
       nextChapter,
-      chapters
+      chapters // Menambahkan daftar chapter ke dalam respons JSON
     });
 
   } catch (error) {
