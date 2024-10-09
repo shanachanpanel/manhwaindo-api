@@ -379,10 +379,7 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
       const imageSrc = $('.seriestucontl .thumb img').attr('src');
       const rating = $('.seriestucontl .rating .num').text().trim();
       const followedBy = $('.seriestucontl .bmc').text().trim();
-
-    // Extract synopsis
-      const synopsis = $('.seriestucontentr .entry-content').text().trim();
-
+ 
       const status = $('table.infotable tr').eq(0).find('td').eq(1).text().trim();
       const type = $('table.infotable tr').eq(1).find('td').eq(1).text().trim();
       const released = $('table.infotable tr').eq(2).find('td').eq(1).text().trim();
@@ -391,14 +388,13 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
       const postedBy = $('table.infotable tr').eq(5).find('i').text().trim();
       const postedOn = $('table.infotable tr').eq(6).find('time').text().trim();
       const updatedOn = $('table.infotable tr').eq(7).find('time').text().trim();
-      const views = $('table.infotable tr').eq(8).find('.ts-views-count').text().trim();
 
       
       // Mengambil views jika tersedia
       const viewsElement = $('.info-left .tsinfo .imptdt').eq(6).text().trim();
       const views = viewsElement.startsWith('Views ') ? viewsElement.replace('Views ', '') : 'N/A';
       
-      const synopsis = $('.info-desc .entry-content.entry-content-single').text().trim();
+      const synopsis = $('.seriestucontentr .entry-content').text().trim();
       
       // Mengambil genre
       const genres = [];
@@ -428,8 +424,11 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
           title,
           imageSrc,
           rating,
+          followedBy,
           status,
           type,
+          released,
+          artist,
           author,
           postedBy,
           postedOn,
@@ -517,7 +516,13 @@ app.get('/api/chapter/:chapterId', async (req, res) => {
     const jsonObject = JSON.parse(jsonString);
 
     // Ambil gambar dari sumber yang ditentukan
-    const images = jsonObject.sources[0].images;
+    const images = [];
+    $('#readerarea img').each((index, element) => {
+      const imgSrc = $(element).attr('data-lazy-src') || $(element).attr('src');
+      if (imgSrc && imgSrc !== 'image/MahiruOfficial_ba-style@nulla.top.png') {
+        images.push(imgSrc);
+      }
+    });
 
     // Ambil URL untuk bab sebelumnya dan berikutnya
     const prevChapter = jsonObject.prevUrl || null;
