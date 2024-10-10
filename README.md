@@ -3,7 +3,7 @@
 REMANHWA API adalah sebuah API yang menyediakan data terkait manhwa dan manga. API ini memungkinkan Anda untuk mengakses berbagai informasi mengenai manhwa, termasuk daftar manhwa, manhwa populer, manhwa terbaru, genre manhwa, pencarian manhwa, serta chapter dari manhwa. API ini dibangun menggunakan Express.js.
 
 ## THANKS TO
-(Gangcakra){https://github.com/gungcakra}
+(Gangcakra){'https://github.com/gungcakra'}
 
 ## Fitur
 
