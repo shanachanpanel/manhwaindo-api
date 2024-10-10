@@ -1,6 +1,9 @@
-# Kurokami API
+# REMANHWA API
 
-Kurokami API adalah sebuah API yang menyediakan data terkait manhwa dan manga. API ini memungkinkan Anda untuk mengakses berbagai informasi mengenai manhwa, termasuk daftar manhwa, manhwa populer, manhwa terbaru, genre manhwa, pencarian manhwa, serta chapter dari manhwa. API ini dibangun menggunakan Express.js.
+REMANHWA API adalah sebuah API yang menyediakan data terkait manhwa dan manga. API ini memungkinkan Anda untuk mengakses berbagai informasi mengenai manhwa, termasuk daftar manhwa, manhwa populer, manhwa terbaru, genre manhwa, pencarian manhwa, serta chapter dari manhwa. API ini dibangun menggunakan Express.js.
+
+## THANKS TO
+(Gangcakra){https://github.com/gungcakra}
 
 ## Fitur
 
@@ -21,7 +24,7 @@ Kurokami API adalah sebuah API yang menyediakan data terkait manhwa dan manga. A
 
 API ini dapat diakses melalui URL berikut:
 
-https://kurokami.vercel.app/api/$endpoint
+https://manhwaindoapi.vercel.app/api/$endpoint
 
 Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
 
@@ -33,7 +36,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa terbaru.
   
   **Contoh:**  
-  `https://kurokami.vercel.app/api/manhwa-new`
+  `https://manhwaindoapi.vercel.app/api/manhwa-new`
 
 ### 2. Detail Manhwa
 - **GET** `/manhwa-detail/:manhwaId`
@@ -41,7 +44,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan detail spesifik dari sebuah manhwa berdasarkan `manhwaId`.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/manhwa-detail/the-nano-machine`
+  `https://manhwaindoapi.vercel.app/api/manhwa-detail/honyaku-no-sainou-de-ore-dake-ga-sekai-wo-kaihen-dekiru-ken`
 
 ### 3. Manhwa Populer
 - **GET** `/manhwa-recomendation`
@@ -49,7 +52,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa yang sedang populer.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/manhwa-recomendation`
+  `https://manhwaindoapi.vercel.app/api/manhwa-recomendation`
 
 ### 4. Rekomendasi Manhwa
 - **GET** `/manhwa-recomend`
@@ -57,7 +60,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar rekomendasi manhwa.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/manhwa-recomend`
+  `https://manhwaindoapi.vercel.app/api/manhwa-recomend`
 
 ### 5. Manhwa Ongoing
 - **GET** `/manhwa-ongoing`
@@ -65,7 +68,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa yang sedang ongoing.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/manhwa-ongoing`
+  `https://manhwaindoapi.vercel.app/api/manhwa-ongoing`
 
 ### 6. Detail Chapter Manhwa
 - **GET** `/chapter/:chapterId`
@@ -73,7 +76,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan detail dari chapter manhwa berdasarkan `chapterId`, termasuk gambar panel manhwa yang bisa dibaca.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/chapter/the-nano-machine-chapter-1`
+  `https://manhwaindoapi.vercel.app/api/chapter/honyaku-no-sainou-de-ore-dake-ga-sekai-wo-kaihen-dekiru-ken-chapter-11-2`
 
 ### 7. List Genre
 - **GET** `/data`
@@ -81,7 +84,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar genre manhwa yang tersedia.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/data`
+  `https://manhwaindoapi.vercel.app/api/data`
 
 ### 8. Manhwa Berdasarkan Genre
 - **GET** `/genre/:genreId`
@@ -89,7 +92,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa berdasarkan genre tertentu.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/genre/action`
+  `https://manhwaindoapi.vercel.app/api/genre/action`
 
 ### 9. Pencarian Manhwa
 - **GET** `/search/:searchId`
@@ -97,4 +100,4 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa berdasarkan kata kunci pencarian.
 
   **Contoh:**  
-  `https://kurokami.vercel.app/api/search/nano%20machine`
+  `https://manhwaindoapi.vercel.app/api/search/nano%20machine`
