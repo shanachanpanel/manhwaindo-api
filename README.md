@@ -5,7 +5,9 @@ REMANHWA API adalah sebuah API yang menyediakan data terkait manhwa dan manga. A
 ## THANKS TO
 (Gangcakra)('https://github.com/gungcakra')
 
-## example
+## deployment on heroku
+
+## example web
 https://remanhwa.online
 
 ## Fitur
@@ -21,7 +23,7 @@ https://remanhwa.online
 
 - **Express.js**: Framework backend minimalis untuk API.
 - **Node.js**: JavaScript runtime yang digunakan sebagai basis aplikasi server.
-- **Vercel**: Platform hosting untuk API ini.
+- **Vercrl**: Platform hosting untuk API ini.
 
 ## URL API
 
