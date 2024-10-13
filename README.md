@@ -106,3 +106,8 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
 
   **Contoh:**  
   `https://manhwaindoapi.vercel.app/api/search/nano%20machine`
+
+
+
+![App Screenshot](https://www.pixiv.net/en/artworks/92307411)
+  
