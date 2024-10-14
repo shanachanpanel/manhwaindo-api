@@ -137,11 +137,97 @@ app.get('/api/manhwa-recomendation', async (req, res) => {
 
 // RECOMMEND
 
+// RECOMMEND
+app.get('/api/hentai-recomendation', async (req, res) => {
+  try {
+    // URL yang akan di-scrape
+    const url = 'https://kiryuu.org/manga/?status=ongoing&type=&order=popular';
+
+    // Ambil HTML dari URL menggunakan axios
+    const { data } = await axios.get(url);
+
+    // Muat HTML ke cheerio
+    const $ = load(data);
+
+    // Scraping data dari elemen yang diberikan
+    const results = [];
+    
+    $('.bs').each((index, element) => {
+      if (index < 30) { // Ambil hanya 7 data pertama
+        const title = $(element).find('.tt').text().trim();
+        const chapter = $(element).find('.epxs').text().trim();
+        const rating = $(element).find('.numscore').text().trim();
+        const imageSrc = $(element).find('img').attr('src');
+        const link = $(element).find('a').attr('href');
+        
+        results.push({
+          title,
+          chapter,
+          rating,
+          imageSrc,
+          link
+        });
+      }
+    });
+
+    // Kirim hasil scraping sebagai respons JSON
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error occurred while scraping data');
+  }
+});
+
+// RECOMMEND
+
 
 // NEW MANHWA
 app.get('/api/manhwa-new', async (req, res) => {
     try {
       const url = 'https://kiryuu.org/';
+      const { data } = await axios.get(url);
+      const $ = load(data);
+  
+      const results = [];
+      
+      $('.utao').each((index, element) => {
+        const title = $(element).find('.luf h4').text().trim();
+        const link = $(element).find('.luf a.series').attr('href');
+        const imageSrc = $(element).find('.imgu img').attr('src');
+        const chapters = [];
+        
+        $(element).find('.luf ul.Manhwa li').each((i, el) => {
+          const chapterLink = $(el).find('a').attr('href');
+          const chapterTitle = $(el).find('a').text().trim();
+          const timeAgo = $(el).find('span').text().trim();
+          
+          chapters.push({
+            chapterLink,
+            chapterTitle,
+            timeAgo
+          });
+        });
+        
+        results.push({
+          title,
+          link,
+          imageSrc,
+          chapters
+        });
+      });
+  
+      res.json(results);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error occurred while scraping data');
+    }
+  });
+// NEW MANHWA
+
+// NEW Hentai
+app.get('/api/hentai-new', async (req, res) => {
+    try {
+      const url = 'https://manhwaland.ink/';
       const { data } = await axios.get(url);
       const $ = load(data);
   
