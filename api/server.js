@@ -53,6 +53,47 @@ app.get('/api/manhwa-popular', async (req, res) => {
 // POPULAR MANHWA
 
 
+// popular hentai
+app.get('/api/hentai-popular', async (req, res) => {
+  try {
+    // URL yang akan di-scrape
+    const url = 'https://manhwaland.ink/';
+
+    // Ambil HTML dari URL menggunakan axios
+    const { data } = await axios.get(url);
+
+    // Muat HTML ke cheerio
+    const $ = load(data);
+
+    // Scraping data dari elemen yang diberikan
+    const results = [];
+    
+    $('.bs').each((index, element) => {
+      if (index < 7) { // Ambil hanya 7 data pertama
+        const title = $(element).find('.tt').text().trim();
+        const chapter = $(element).find('.epxs').text().trim();
+        const rating = $(element).find('.numscore').text().trim();
+        const imageSrc = $(element).find('img').attr('src');
+        const link = $(element).find('a').attr('href');
+        
+        results.push({
+          title,
+          chapter,
+          rating,
+          imageSrc,
+          link
+        });
+      }
+    });
+
+    // Kirim hasil scraping sebagai respons JSON
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error occurred while scraping data');
+  }
+});
+
 // RECOMMEND
 app.get('/api/manhwa-recomendation', async (req, res) => {
   try {
