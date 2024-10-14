@@ -141,7 +141,7 @@ app.get('/api/manhwa-recomendation', async (req, res) => {
 app.get('/api/hentai-recomendation', async (req, res) => {
   try {
     // URL yang akan di-scrape
-    const url = 'https://kiryuu.org/manga/?status=ongoing&type=&order=popular';
+    const url = 'https://www.manhwaland.ink/manga/?status=ongoing&type=&order=popular';
 
     // Ambil HTML dari URL menggunakan axios
     const { data } = await axios.get(url);
@@ -297,6 +297,37 @@ app.get('/api/manhwa-recommend', async (req, res) => {
   }
 });
 // MANHWA RECOMMEND
+
+// Hentai RECOMMEND
+app.get('/api/hentai-recommend', async (req, res) => {
+  const url = 'https://manhwaland.ink/';
+
+  try {
+      const { data } = await axios.get(url);
+      const $ = load(data);
+      const recommendations = [];
+
+      $('.serieslist.pop.wpop.wpop-weekly ul li').each((index, element) => {
+          const item = {};
+          const img = $(element).find('.imgseries img');
+          
+          item.rank = $(element).find('.ctr').text().trim();
+          item.title = $(element).find('.leftseries h2 a').text().trim();
+          item.url = $(element).find('.leftseries h2 a').attr('href');
+          item.image = img.attr('src');
+          item.genres = $(element).find('.leftseries span').text().replace('Genres: ', '').split(', ');
+          item.rating = $(element).find('.numscore').text().trim();
+
+          recommendations.push(item);
+      });
+
+      res.json(recommendations);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching data' });
+  }
+});
+// HENTAI RECOMMENDED
 
 // DATA GENRE
   app.get('/api/data', async (req, res) => {
