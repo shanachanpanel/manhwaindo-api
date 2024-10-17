@@ -42,7 +42,7 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   Mendapatkan daftar manhwa terbaru.
   
   **Contoh:**  
-  `https://manhwaindoapi.vercel.app/api/manhwa-new`
+  `https://mangaapi.remanhwa.online/api/manhwa-new`
 
 ### 2. Detail Manhwa
 - **GET** `/manhwa-detail/:manhwaId`
@@ -108,6 +108,27 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
   **Contoh:**  
   `https://manhwaindoapi.vercel.app/api/search/nano%20machine`
 
+  ### 1. hentai baru
+- **GET** `/hentai-new`
+  
+  Mendapatkan daftar hentai terbaru.
+  
+  **Contoh:**  
+  `https://mangaapi.remanhwa.online/api/hentai-new`
+### 2. hentai Populer
+- **GET** `/hentai-recommend`
+
+  Mendapatkan daftar hentai yang sedang populer.
+
+  **Contoh:**  
+  `https://manhwaindoapi.vercel.app/api/hentai-recommend`
+  ### 3. Manhwa Populer
+- **GET** `/hentai-recomendation`
+
+  Mendapatkan daftar manhwa yang sedang populer.
+
+  **Contoh:**  
+  `https://manhwaindoapi.vercel.app/api/hentai-recomendation`
 
 
 ![App Screenshot](https://www.pixiv.net/en/artworks/92307411)
