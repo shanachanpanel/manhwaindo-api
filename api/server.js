@@ -356,6 +356,34 @@ app.get('/api/hentai-recommend', async (req, res) => {
 
 // DATA GENRE
 
+// DATA hentai GENRE
+  app.get('/api/hentai-data', async (req, res) => {
+    try {
+        const url = 'https://manhwaland.ink/manga/list-mode/'; // Replace with the actual URL
+        const { data } = await axios.get(url);
+        const $ = load(data);
+
+        const genres = [];
+
+        $('.dropdown-menu.c4.genrez li').each((index, element) => {
+            const genreLabel = $(element).find('label').text().trim();
+            const genreValue = $(element).find('input').val();
+
+            if (genreLabel && genreValue) {
+                genres.push({ label: genreLabel, value: genreValue });
+            }
+        });
+
+        res.json({ genres });
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+        res.status(500).json({ error: 'Failed to fetch data' });
+    }
+});
+
+// DATA HENTAI GENRE
+
+
 // GENRE RESULT
 app.get('/api/genre/:genreId', async (req, res) => {
   const { genreId } = req.params;
