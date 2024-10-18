@@ -129,6 +129,13 @@ Gantilah `$endpoint` dengan endpoint yang sesuai dari daftar di bawah.
 
   **Contoh:**  
   `https://manhwaindoapi.vercel.app/api/hentai-recomendation`
+  ### 4. List Genre
+- **GET** `/data`
+
+  Mendapatkan daftar genre manhwa yang tersedia.
+
+  **Contoh:**  
+  `https://mangaapi.remanhwa.online/api/hentai-data`
 
 
 ![App Screenshot](https://www.pixiv.net/en/artworks/92307411)
