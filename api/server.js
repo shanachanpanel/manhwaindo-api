@@ -637,7 +637,7 @@ app.get('/api/manhwa-detail/:manhwaId', async (req, res) => {
 // MANHWA-ONGOING
 app.get('/api/manhwa-ongoing', async (req, res) => {
   try {
-      const url = 'https://kiryuu.org/manga/?status=ongoing&type=manhua&order=popular';
+      const url = 'https://kiryuu.org/manga/?status=ongoing&type=manga&order=popular';
       const response = await axios.get(url);
       const html = response.data;
       const $ = load(html);
