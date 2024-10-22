@@ -122,12 +122,12 @@ async function blackboxAIChat(message) {
 }
 
 // Endpoint untuk servis dokumen HTML
-app.get('/', (req, res) => {
+app.get('/v1', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Endpoint untuk LuminAI
-app.get('/api/chateverywhere', async (req, res) => {
+app.get('/v1/api/chateverywhere', async (req, res) => {
   try {
     const { message }= req.query;
     if (!message) {
@@ -144,7 +144,7 @@ app.get('/api/chateverywhere', async (req, res) => {
   }
 });
 
-app.get('/api/rekaai', async (req, res) => {
+app.get('/v1/api/rekaai', async (req, res) => {
   try {
     const { message }= req.query;
     if (!message) {
@@ -163,7 +163,7 @@ app.get('/api/rekaai', async (req, res) => {
 
 
 // Endpoint untuk shana
-app.get('/api/shana', async (req, res) => {
+app.get('/v1/api/shana', async (req, res) => {
   try {
     const message = req.query.message;
     if (!message) {
@@ -181,7 +181,7 @@ app.get('/api/shana', async (req, res) => {
 });
 
 // Endpoint untuk degreeGuru
-app.get('/api/remanhwa-flash', async (req, res) => {
+app.get('/v1/api/remanhwa-flash', async (req, res) => {
   try {
     const { message }= req.query;
     if (!message) {
@@ -199,7 +199,7 @@ app.get('/api/remanhwa-flash', async (req, res) => {
 });
 
 // Endpoint untuk shanapro
-app.get('/api/shanapro', async (req, res) => {
+app.get('/v1/api/shanapro', async (req, res) => {
   try {
     const message = req.query.message;
     if (!message) {
@@ -217,7 +217,7 @@ app.get('/api/shanapro', async (req, res) => {
 });
 
 // Endpoint untuk smartContract
-app.get('/api/shanabeta3.5', async (req, res) => {
+app.get('/v1/api/shanabeta3.5', async (req, res) => {
   try {
     const message = req.query.message;
     if (!message) {
@@ -235,7 +235,7 @@ app.get('/api/shanabeta3.5', async (req, res) => {
 });
 
 // Endpoint untuk blackboxAIChat
-app.get('/api/blackboxAIChat', async (req, res) => {
+app.get('/v1/api/blackboxAIChat', async (req, res) => {
   try {
     const message = req.query.message;
     if (!message) {
