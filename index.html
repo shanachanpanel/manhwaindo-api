@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #000018;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    min-width: 5px;
+  }
+  .container {
+    width: 100%;
+    padding: 20px;
+    background-color: #000018;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
+  h2 {
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+  }
+  p {
+    line-height: 1.6;
+    color: #6c757d;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  pre {
+    background-color: #191c31;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  .btn-container {
+    margin-bottom: 20px;
+    background-color: #191c31;
+    border-radius: 1rem;
+    padding: 10px;
+  }
+  .work__card {
+    background-color: #191c31;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 10px; /* Adjusted to be closer to Information heading */
+  }
+  .work__title {
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    margin-bottom: .25rem;
+  }
+  .btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0;
+    background-color: #191c31;
+    color: #fff;
+    border: none;
+    padding: 13px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-text {
+    flex-grow: 1;
+    text-align: left;
+  }
+  .btn-link {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .section-spacing {
+    margin-top: 60px;
+  }
+  .large-spacing {
+    margin-top: 100px; /* Increased spacing */
+  }
+  .section__subtitle {
+    display: block;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .centered-title {
+    text-align: center;
+  }
+
+  /* Media Queries */
+  @media (min-width: 768px) {
+    .container {
+      width: 75%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>API Documentation</h1>
+  <p>Welcome to the API documentation for our service. Below you will find information about the available endpoints and how to use them.</p>
+  
+  <span class="section__subtitle">01</span>
+  <h2 class="centered-title">Information</h2>
+  <div class="work__card mix apps sites">
+    <h3 class="work__title"><b>Your IP Address</b></h3>
+    <div class="h3 mb-0 font-weight-bold" id="ip"></div>
+    <br>
+    <h3 class="work__title"><b>Time</b></h3>
+    <div class="h3 mb-0 font-weight-bold" id="jam"></div>
+    <br>
+    <h3 class="work__title"><b>Date</b></h3>
+    <div class="h5 mb-0 font-weight-bold" id="tanggal"></div>
+    <br>
+    <h3 class="work__title"><b>Your Battery</b></h3>
+    <div class="h5 mb-0 font-weight-bold" id="batre"></div>
+  </div>
+
+  <span class="section__subtitle">02</span>
+  <h2 class="centered-title">Artificial Intelligence</h2>
+  <div class="btn-container">
+    <div class="btn">
+      <div class="btn-link">/api/shanapro</div>
+      <a href="/api/shanapro?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/GptWeb</div>
+      <a href="/api/gptweb?q=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/remanhwa-flash</div>
+      <a href="/api/remanhwa-flash?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/shanabeta3.5</div>
+      <a href="/api/shanabeta3.5?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+    <div class="btn-link">/api/chateverywhere</div>
+    <a href="/api/chateverywhere?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/rekaai</div>
+      <a href="/api/rekaai?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/shana</div>
+      <a href="/api/shana?message=hai" class="btn-link">Try</a>
+    </div>
+    <div class="btn">
+      <div class="btn-link">/api/BlackboxAIChat</div>
+      <a href="/api/blackboxAIChat?message=hai" class="btn-link">Try</a>
+    </div>
+  </div>
+
+  <h2>Usage</h2>
+  <p>To use the endpoints, send a GET request to the desired endpoint with the following query parameter:</p>
+  <ul>
+    <li>message: Your message content</li>
+  </ul>
+
+  <h2>Response</h2>
+  <p>The response will be in JSON format with the following structure:</p>
+  <pre>
+  {
+    "status": 200,
+    "creator": "ChatGPT",
+    "data": {
+      "response": "Response data here"
+    }
+  }
+  </pre>
+
+<h2 class="centered-title">Rules</h2>
+  <div class="work__card mix apps sites">
+    <div class="card-body mb-3">
+      <ol>
+        <li>Don't flooding request</li>
+        <li>The owner can change the conditions on this website at any time, in order to maintain the quality of the website.</li>
+        <li>All the features here are free and unlimited request.</li>
+        <li>The owner is not responsible for what you do when using this website.</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Fetch IP Address
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('ip').textContent = data.ip;
+    });
+
+  // Update Time
+  function updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    document.getElementById('jam').textContent = timeString;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // Update Date
+  function updateDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    const dateString = `${day}-${month}-${year}`;
+    document.getElementById('tanggal').textContent = dateString;
+  }
+  updateDate();
+
+  // Fetch Battery Status
+  navigator.getBattery().then(function(battery) {
+    function updateBatteryStatus() {
+      const level = Math.round(battery.level * 100) + '%';
+      document.getElementById('batre').textContent = level;
+    }
+    updateBatteryStatus();
+    battery.addEventListener('levelchange', updateBatteryStatus);
+  });
+});
+</script>
+</body>
+    </html>
